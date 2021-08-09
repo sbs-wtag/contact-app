@@ -1,0 +1,49 @@
+version: '3.6'
+services:
+    postgres:
+        image: postgres:13.3
+        environment: 
+            - POSTGRES_DB=contact
+            - POSTGRES_USER=pg-user
+            - POSTGRES_PASSWORD=pg-pass
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        deploy:
+            restart_policy:
+                condition: on-failure
+        ports:
+            - 5400:5432
+        networks:
+            - public
+    backend:
+        image: contact-backend
+        environment: 
+            - SERVER_PORT=8888
+            - SPRING_R2DBC_USERNAME=pg-user
+            - SPRING_R2DBC_PASSWORD=pg-pass
+            - SPRING_R2DBC_URL=r2dbc:postgresql://postgres:5432/contact
+            - SPRING_LIQUIBASE_USER=pg-user
+            - SPRING_LIQUIBASE_PASSWORD=pg-pass
+            - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgres:5432/contact
+        deploy:
+            restart_policy:
+                condition: on-failure
+        ports:
+            - 8888:8888
+        networks:
+            - public
+    webapp:
+        image: contact-webapp
+        environment: 
+            - HOST=http://localhost:8888
+        deploy:
+            restart_policy:
+                condition: on-failure
+        ports:
+            - 80:80
+        networks:
+            - public
+networks: 
+    public:
+volumes: 
+    pgdata:

@@ -1,0 +1,9 @@
+.view-container {
+    padding: 10em;
+}
+.buttons-row {
+    margin-bottom: .5em;
+}
+.list-group-item > button {
+    margin: 3px;
+}

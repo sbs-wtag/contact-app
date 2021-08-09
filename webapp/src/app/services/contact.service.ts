@@ -5,7 +5,7 @@ import { environment as env } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class ContactService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
     
     public async getAll(): Promise<Array<Contact>> {
         try {

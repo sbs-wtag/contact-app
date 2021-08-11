@@ -21,11 +21,11 @@ jobs:
         with:
           node-version: 16.6.1
 
-      - name: Lint Action
-        uses: wearerequired/lint-action@v1.10.0
-        with:
-          eslint: true
-          eslint_dir: webapp/
+      # - name: Lint Action
+      #   uses: wearerequired/lint-action@v1.10.0
+      #   with:
+      #     eslint: true
+      #     eslint_dir: webapp/
 
       - name: npm install and npm run build
         run: |

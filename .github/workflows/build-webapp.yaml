@@ -31,4 +31,4 @@ jobs:
           eslint_dir: webapp/
 
       - name: Build webapp
-        run: cd webapp && npm run build:ci
+        run: cd webapp && npm run build-ci

@@ -36,6 +36,7 @@ export class AppComponent implements AfterViewInit {
 
   async delete(contact: Contact): Promise<void> {
     await this.contactService.delete(contact);
+
     this.contacts = this.contacts.filter((c: Contact) => c.id != contact.id);
   }
 

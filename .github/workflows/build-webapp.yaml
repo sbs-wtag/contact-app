@@ -29,7 +29,6 @@ jobs:
         with:
           eslint: true
           eslint_dir: webapp/
-          eslint_args: "--ext .js,.ts ."
 
       - name: Build webapp
         run: cd webapp && npm run build-ci
